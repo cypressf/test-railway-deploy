@@ -1,0 +1,40 @@
+{
+  "db": "PostgreSQL",
+  "470d398680e0d1a547fe824e17eb288b269c561a98e263fd596025258c8034a1": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Int4",
+          "Float4"
+        ]
+      }
+    },
+    "query": "INSERT INTO data (id, value) VALUES ($1, $2)"
+  },
+  "e73ede71445bda0e62664d9855897fbb3b0b0d875b3186dafac360f6e4c6343b": {
+    "describe": {
+      "columns": [
+        {
+          "name": "id",
+          "ordinal": 0,
+          "type_info": "Int4"
+        },
+        {
+          "name": "value",
+          "ordinal": 1,
+          "type_info": "Float4"
+        }
+      ],
+      "nullable": [
+        false,
+        false
+      ],
+      "parameters": {
+        "Left": []
+      }
+    },
+    "query": "SELECT * FROM data"
+  }
+}
