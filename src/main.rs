@@ -52,6 +52,8 @@ async fn main() -> std::io::Result<()> {
             .app_data(data.clone())
             .wrap(middleware::Logger::default())
             .service(web::resource("/").to(|| async { "Hello world!" }))
+            .service(get_all_data)
+            .service(post_data)
     })
     .bind(format!("0.0.0.0:{port}"))?
     .run()
