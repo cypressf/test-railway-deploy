@@ -2,14 +2,14 @@ use std::env::var;
 
 use actix_web::{
     get, middleware, post,
-    web::{self, Data},
+    web::{self, Data, Json},
     App, HttpServer, Responder,
 };
 use env_logger::Env;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
 
-#[derive(sqlx::FromRow, Debug, Deserialize)]
+#[derive(sqlx::FromRow, Debug, Deserialize, Serialize)]
 struct DataRow {
     pub id: i32,
     pub value: f32,
@@ -22,7 +22,7 @@ async fn get_all_data(data: Data<PgPool>) -> impl Responder {
         .await
         .unwrap();
 
-    format!("{:?}", result)
+    Json(result)
 }
 
 #[post("/data/{id}/{value}")]
